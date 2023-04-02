@@ -38,7 +38,7 @@ multiSolidBodyMotionSolverCoeffs
     {
         solidBodyMotionFunction tabulated6DoFMotion;
         CofG         (0 0 0); // TODO: figure out axis of rotation
-        timeDataFileName "/mnt/d/Main/HMC/Senior/S2/Thesis/FlappingFlight/open_foam_test/overset/6dof_file_generation/6DoF.dat";
+        timeDataFileName "$MODEL/6dof_file_generation/6DoF.dat";
     }
 }
 
