@@ -20,14 +20,14 @@ internalField   uniform (0 0 0);
 
 boundaryField
 {
-    // ".*Bound"
-    // {
-    //     patchType       overset;
-    //     type            zeroGradient;
+    "oversetPatch"
+    {
+        patchType       overset;
+        type            zeroGradient;
 
-    //     //type            overset;
-    //     //value           $internalField;
-    // }
+        //type            overset;
+        //value           $internalField;
+    }
 
     // "(leftWing|rightWing|body)"
     // {

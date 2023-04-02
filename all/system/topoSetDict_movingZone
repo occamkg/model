@@ -26,6 +26,16 @@ actions
             set c1;
         }
     }
+    {
+        name    rightWing;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set c2;
+        }
+    }
 );
 
 // ************************************************************************* //

@@ -1,7 +1,7 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2212                                  |
+|  \\    /   O peration     | Version:  v2212                                 |
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -9,40 +9,62 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    arch        "LSB;label=32;scalar=64";
-    class       volScalarField;
-    location    "0";
-    object      nut;
+    class       dictionary;
+    object      blockMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
+scale   0.01;
 
-internalField   uniform 0;
+xmin -8;
+xmax 8;
+ymin -2;
+ymax  2;
+zmin -20;
+zmax  0;
 
-boundaryField
-{
+vertices
+(
+    ($xmin $ymin $zmin)
+    ($xmax $ymin $zmin)
+    ($xmax $ymax $zmin)
+    ($xmin $ymax $zmin)
+    ($xmin $ymin $zmax)
+    ($xmax $ymin $zmax)
+    ($xmax $ymax $zmax)
+    ($xmin $ymax $zmax)
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7)
+    (32 8 40)
+    simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
     oversetPatch
     {
-        type            overset;
-        value           uniform 0;
+        type overset;
+        faces
+        (
+            (3 7 6 2)
+            (1 5 4 0)
+            (0 3 2 1)
+            (4 5 6 7)
+            (0 4 7 3)
+            (2 6 5 1)
+        );
     }
-    sides
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    inlet
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    outlet
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-}
+);
 
+mergePatchPairs
+(
+);
 
 // ************************************************************************* //

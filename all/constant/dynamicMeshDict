@@ -38,7 +38,13 @@ multiSolidBodyMotionSolverCoeffs
     {
         solidBodyMotionFunction tabulated6DoFMotion;
         CofG         (0 0 0); // TODO: figure out axis of rotation
-        timeDataFileName "$MODEL/6dof_file_generation/6DoF.dat";
+        timeDataFileName "$MODEL/6dof_file_generation/6DoFL.dat";
+    }
+    rightWing
+    {
+        solidBodyMotionFunction tabulated6DoFMotion;
+        CofG         (0 0 0); // TODO: figure out axis of rotation
+        timeDataFileName "$MODEL/6dof_file_generation/6DoFR.dat";
     }
 }
 

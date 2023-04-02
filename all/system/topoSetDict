@@ -20,11 +20,8 @@ actions
         name    c0;
         type    cellSet;
         action  new;
-        source  regionToCell;
-        sourceInfo
-        {
-            insidePoints ((1 0.5 0.5));
-        }
+        source  regionsToCell;
+        insidePoints ((1 0.5 0.5));
     }
 
     {
@@ -32,16 +29,30 @@ actions
         type    cellSet;
         action  new;
         source  cellToCell;
-        sourceInfo
-        {
-            set c0;
-        }
+        set c0;
     }
 
     {
         name    c1;
         type    cellSet;
         action  invert;
+    }
+
+    {
+        name    c2;
+        type    cellSet;
+        action  new;
+        source  regionsToCell;
+        set     c1;
+        insidePoints ((0 0 -0.0001));
+    }
+
+    {
+        name    c1;
+        type    cellSet;
+        action  subtract;
+        source  cellToCell;
+        set c2;
     }
 );
 

@@ -23,11 +23,11 @@ boundaryField
 {
     #includeEtc "caseDicts/setConstraintTypes"
 
-    // ".*Bound"
-    // {
-    //     type            overset;
-    //     value           $internalField;
-    // }
+    "oversetPatch"
+    {
+        type            overset;
+        value           $internalField;
+    }
 
     // "(leftWing|rightWing|body)"
     // {

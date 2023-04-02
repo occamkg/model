@@ -3,10 +3,14 @@
 cd leftWing
 blockMesh
 
+cd ../rightWing
+blockMesh
+
 cd ../all
 blockMesh
 
 mergeMeshes . ../leftWing -overwrite
+mergeMeshes . ../rightWing -overwrite
 
 #To create zones for overset treatment
 topoSet
