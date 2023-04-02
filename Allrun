@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd leftWing
+blockMesh
+
+cd ../all
+blockMesh
+
+mergeMeshes . ../leftWing -overwrite
+
+#To create zones for overset treatment
+topoSet
+
+#To create zones for prescribed motion
+topoSet -dict system/topoSetDict_movingZone
+
+#Restore time folder 0
+rm -r 0
+cp -r 0_org 0
+
+#And assign zoneID for overset treatment
+setFields
+checkMesh
+
+renumberMesh -overwrite
+overPimpleDyMFoam | tee log

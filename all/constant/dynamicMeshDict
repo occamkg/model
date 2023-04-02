@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus-overset                          |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      dynamicMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dynamicFvMesh       dynamicOversetFvMesh;
+
+dynamicOversetFvMeshCoeffs
+{
+//    layerRelax 0.3;
+}
+
+//motionSolverLibs ( "libfvMotionSolvers.so" );
+//
+//solver          displacementLaplacian;
+//
+//displacementLaplacianCoeffs
+//{
+//    diffusivity     uniform 1;
+//}
+
+solver          multiSolidBodyMotionSolver;
+
+multiSolidBodyMotionSolverCoeffs
+{
+    leftWing
+    {
+        solidBodyMotionFunction tabulated6DoFMotion;
+        CofG         (0 0 0); // TODO: figure out axis of rotation
+        timeDataFileName "/mnt/d/Main/HMC/Senior/S2/Thesis/FlappingFlight/open_foam_test/overset/6dof_file_generation/6DoF.dat";
+    }
+}
+
+// ************************************************************************* //
