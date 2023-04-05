@@ -6,11 +6,17 @@ blockMesh
 cd ../rightWing
 blockMesh
 
+cd ../body
+surfaceFeatureExtract
+blockMesh
+snappyHexMesh -overwrite
+
 cd ../all
 blockMesh
 
 mergeMeshes . ../leftWing -overwrite
 mergeMeshes . ../rightWing -overwrite
+mergeMeshes . ../body -overwrite
 
 #To create zones for overset treatment
 topoSet
