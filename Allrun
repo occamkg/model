@@ -9,24 +9,27 @@ cd leftWing
 surfaceFeatureExtract
 blockMesh
 decomposePar
-mpirun -np 8 snappyHexMesh -overwrite -parallel
+mpirun -np 64 snappyHexMesh -overwrite -parallel
 reconstructParMesh -constant
+rm -r processor*
 # snappyHexMesh -overwrite
 
 cd ../rightWing
 surfaceFeatureExtract
 blockMesh
 decomposePar
-mpirun -np 8 snappyHexMesh -overwrite -parallel
+mpirun -np 64 snappyHexMesh -overwrite -parallel
 reconstructParMesh -constant
+rm -r processor*
 # snappyHexMesh -overwrite
 
 cd ../body
 surfaceFeatureExtract
 blockMesh
 decomposePar
-mpirun -np 8 snappyHexMesh -overwrite -parallel
+mpirun -np 64 snappyHexMesh -overwrite -parallel
 reconstructParMesh -constant
+rm -r processor*
 # snappyHexMesh -overwrite
 
 cd ../all
@@ -55,4 +58,5 @@ renumberMesh -overwrite
 decomposePar
 mpirun -np 64 overPimpleDyMFoam -parallel
 reconstructPar
+rm -r processor*
 # overPimpleDyMFoam | tee log
