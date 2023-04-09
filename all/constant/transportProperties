@@ -16,6 +16,7 @@ FoamFile
 
 transportModel  Newtonian;
 
-nu              nu [ 0 2 -1 0 0 0 0 ] 1e-03;
+// https://www.engineersedge.com/physics/viscosity_of_air_dynamic_and_kinematic_14483.htm
+nu              nu [ 0 2 -1 0 0 0 0 ] 1.562e-05; // 25 degrees C
 
 // ************************************************************************* //

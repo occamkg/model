@@ -28,10 +28,10 @@ boundaryField
         value           $internalField;
     }
 
-    // "(leftWing|rightWing|body)"
-    // {
-    //     type            zeroGradient;
-    // }
+    "(leftWing|rightWing|body)"
+    {
+        type            zeroGradient;
+    }
 
     inlet
     {

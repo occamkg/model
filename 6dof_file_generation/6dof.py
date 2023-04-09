@@ -13,8 +13,8 @@ def createData():
     dt = 0.001 #s
     numPoints = int((end - start) / dt + 1)
 
-    minWA = -45 #deg
-    maxWA = 45 #deg
+    minWA = -60 #deg
+    maxWA = 60 #deg
 
     minAOA = -20 #deg
     maxAOA = 30 #deg

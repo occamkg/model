@@ -16,10 +16,10 @@ FoamFile
 
 scale   0.01;
 
-xmin -10;
-xmax 10;
-ymin -5;
-ymax  5;
+xmin -15;
+xmax 15;
+ymin -10;
+ymax  10;
 zmin 0;
 zmax  30;
 
@@ -38,7 +38,7 @@ vertices
 blocks
 (
     hex (0 1 2 3 4 5 6 7)
-    (40 20 60)
+    (6 4 6)
     simpleGrading (1 1 1)
 );
 

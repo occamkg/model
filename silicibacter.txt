@@ -1,0 +1,16 @@
+ssh occam@silicibacter.cs.hmc.edu
+
+. /usr/lib/openfoam/openfoam2212/etc/bashrc
+
+export MODEL=/research/occam/model
+cd $MODEL
+
+
+decomposePar
+mpirun -np 64 overPimpleDyMFoam -parallel
+reconstructPar
+
+
+
+================================copy====================================
+scp -r <file or folder> occam@silicibacter.cs.hmc.edu:/research/occam/model

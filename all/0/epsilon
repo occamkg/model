@@ -42,6 +42,21 @@ boundaryField
         inletValue      uniform 1;
         value           uniform 1;
     }
+    leftWing
+    {
+        type            epsilonWallFunction;
+        value           uniform 1;
+    }
+    rightWing
+    {
+        type            epsilonWallFunction;
+        value           uniform 1;
+    }
+    body
+    {
+        type            epsilonWallFunction;
+        value           uniform 1;
+    }
 }
 
 

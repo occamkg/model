@@ -29,11 +29,11 @@ boundaryField
         //value           $internalField;
     }
 
-    // "(leftWing|rightWing|body)"
-    // {
-    //     type            uniformFixedValue;
-    //     uniformValue    (0 0 0);
-    // }
+    "(leftWing|rightWing|body)"
+    {
+        type            uniformFixedValue;
+        uniformValue    (0 0 0);
+    }
 
     "(inlet|outlet|sides)"
     {

@@ -42,6 +42,21 @@ boundaryField
         type            calculated;
         value           uniform 0;
     }
+    leftWing
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
+    rightWing
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
+    body
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
 }
 
 

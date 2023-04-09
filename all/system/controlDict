@@ -39,7 +39,7 @@ writeInterval   0.2;
 endTime         1;
 deltaT          0.05;
 writeControl    runTime;
-writeInterval   0.05;
+writeInterval   2;
 
 
 purgeWrite      0;
@@ -75,8 +75,8 @@ functions
         libs ("libfieldFunctionObjects.so");
         enabled         true;
 
-	writeControl   timeStep;
-	writeInterval  1;
+        writeControl   timeStep;
+        writeInterval  1;
 
         log             true;
 
@@ -85,7 +85,7 @@ functions
         regionType          patch;
         name      inlet;
 
-	operation       sum;
+	    operation       sum;
         fields
         (
             phi
@@ -160,27 +160,28 @@ functions
 
     forces_object
     {
-	type forces;
-	libs ("libforces.so");
+        type forces;
+        libs ("libforces.so");
 
-	//writeControl outputTime;
-	writeControl   timeStep;
-	writeInterval  1;
+        //writeControl outputTime;
+        writeControl   timeStep;
+        writeInterval  1;
 
-	//// Patches to sample
-	//patches ("body1" "body2" "body3");
-	patches ("leftWing" "rightWing" "body");
+        //// Patches to sample
+        //patches ("body1" "body2" "body3");
+        patches ("leftWing" "rightWing" "body");
 
-	//// Name of fields
-	pName p;
-	Uname U;
+        //// Name of fields
+        pName p;
+        Uname U;
 
-	//// Density
-	rho rhoInf;
-	rhoInf 1.;
+        //// Density
+        rho rhoInf;
+        // https://www.engineersedge.com/physics/viscosity_of_air_dynamic_and_kinematic_14483.htm
+        rhoInf 1.184; //25 degrees C
 
-	//// Centre of rotation
-	CofR (0 0 0);
+        //// Centre of rotation
+        CofR (0 0 0);
     }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -189,34 +190,34 @@ functions
 
     forceCoeffs_object
     {
-	// rhoInf - reference density
-	// CofR - Centre of rotation
-	// dragDir - Direction of drag coefficient
-	// liftDir - Direction of lift coefficient
-	// pitchAxis - Pitching moment axis
-	// magUinf - free stream velocity magnitude
-	// lRef - reference length
-	// Aref - reference area
-	type forceCoeffs;
-	libs ("libforces.so");
-	//patches ("body1" "body2" "body3");
-	patches ("leftWing" "rightWing" "body");
+        // rhoInf - reference density
+        // CofR - Centre of rotation
+        // dragDir - Direction of drag coefficient
+        // liftDir - Direction of lift coefficient
+        // pitchAxis - Pitching moment axis
+        // magUinf - free stream velocity magnitude
+        // lRef - reference length
+        // Aref - reference area
+        type forceCoeffs;
+        libs ("libforces.so");
+        //patches ("body1" "body2" "body3");
+        patches ("leftWing" "rightWing" "body");
 
-	pName p;
-	Uname U;
-	rho rhoInf;
-	rhoInf 1.0;
+        pName p;
+        Uname U;
+        rho rhoInf;
+        rhoInf 1.184;
 
-	//// Dump to file
-	log true;
+        //// Dump to file
+        log true;
 
-	CofR (0.0 0 0);
-	liftDir (0 1 0);
-	dragDir (1 0 0);
-	pitchAxis (0 0 1);
-	magUInf 1.0;
-	lRef 1.0;         // reference lenght for moments!!!
-	Aref 1.0;	//2.0;         // reference area 1 for 2d
+        CofR (0.0 0 0);
+        liftDir (0 1 0);
+        dragDir (1 0 0);
+        pitchAxis (0 0 1);
+        magUInf 12.7;
+        lRef 1.0;         // reference lenght for moments!!!
+        Aref 1.0;	//2.0;         // reference area 1 for 2d
 
         writeControl   timeStep;
         writeInterval  1;
@@ -228,21 +229,21 @@ functions
 
     minmaxdomain
     {
-	type fieldMinMax;
-	//type banana;
+        type fieldMinMax;
+        //type banana;
 
-	libs ("libfieldFunctionObjects.so");
+        libs ("libfieldFunctionObjects.so");
 
-	enabled true;
+        enabled true;
 
-	mode component;
+        mode component;
 
-	writeControl timeStep;
-	writeInterval 1;
+        writeControl timeStep;
+        writeInterval 1;
 
-	log true;
+        log true;
 
-	fields (p U k epsilon omega nut);
+        fields (p U k epsilon omega nut);
     }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -255,8 +256,8 @@ functions
     	enabled true;
         writeControl outputTime;
 
-	//writeControl timeStep;
-	//writeInterval 1;
+        //writeControl timeStep;
+        //writeInterval 1;
     }
 ///////////////////////////////////////////////////////////////////////////
 

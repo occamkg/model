@@ -45,6 +45,24 @@ boundaryField
         value           uniform (0 0 0);
         uniformValue    constant (0 0 0);
     }
+    leftWing
+    {
+        type            uniformFixedValue;
+        value           uniform (0 0 0);
+        uniformValue    constant (0 0 0);
+    }
+    rightWing
+    {
+        type            uniformFixedValue;
+        value           uniform (0 0 0);
+        uniformValue    constant (0 0 0);
+    }
+    body
+    {
+        type            uniformFixedValue;
+        value           uniform (0 0 0);
+        uniformValue    constant (0 0 0);
+    }
 }
 
 

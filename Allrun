@@ -1,15 +1,35 @@
 #!/bin/bash
 
-cd leftWing
-blockMesh
+# transforming obj file
+# surfaceTransformPoints -scale '(3.33333 3.33333 3.33333)' file.obj file.obj
 
-cd ../rightWing
-blockMesh
+# create meshes
 
-cd ../body
-surfaceFeatureExtract
-blockMesh
-snappyHexMesh -overwrite
+# cd leftWing
+# surfaceFeatureExtract
+# blockMesh
+# # decomposePar
+# # mpirun -np 8 snappyHexMesh -overwrite -parallel
+# # reconstructParMesh -constant
+# snappyHexMesh -overwrite
+# blockMesh
+
+# cd ../rightWing
+# surfaceFeatureExtract
+# blockMesh
+# # decomposePar
+# # mpirun -np 8 snappyHexMesh -overwrite -parallel
+# # reconstructParMesh -constant
+# snappyHexMesh -overwrite
+# blockMesh
+
+# cd ../body
+# surfaceFeatureExtract
+# blockMesh
+# # decomposePar
+# # mpirun -np 8 snappyHexMesh -overwrite -parallel
+# # reconstructParMesh -constant
+# snappyHexMesh -overwrite
 
 cd ../all
 blockMesh

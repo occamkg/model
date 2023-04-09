@@ -43,6 +43,26 @@ regions
         );
     }
 
+    cellToCell
+    {
+        set c2;
+
+        fieldValues
+        (
+            volScalarFieldValue zoneID 2
+        );
+    }
+
+    cellToCell
+    {
+        set c3;
+
+        fieldValues
+        (
+            volScalarFieldValue zoneID 3
+        );
+    }
+
 );
 
 // ************************************************************************* //

@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [ 0 2 -3 0 0 0 0 ];
 
-internalField   uniform 1;
+internalField   uniform 273;
 
 boundaryField
 {
@@ -28,11 +28,11 @@ boundaryField
         value           $internalField;
     }
 
-    // "(leftWing|rightWing|body)"
-    // {
-    //     type            epsilonWallFunction;
-    //     value           $internalField;
-    // }
+    "(leftWing|rightWing|body)"
+    {
+        type            epsilonWallFunction;
+        value           $internalField;
+    }
 
     inlet
     {
