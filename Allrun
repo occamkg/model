@@ -5,30 +5,28 @@
 
 # create meshes
 
-# cd leftWing
-# surfaceFeatureExtract
-# blockMesh
-# # decomposePar
-# # mpirun -np 8 snappyHexMesh -overwrite -parallel
-# # reconstructParMesh -constant
+cd leftWing
+surfaceFeatureExtract
+blockMesh
+decomposePar
+mpirun -np 8 snappyHexMesh -overwrite -parallel
+reconstructParMesh -constant
 # snappyHexMesh -overwrite
-# blockMesh
 
-# cd ../rightWing
-# surfaceFeatureExtract
-# blockMesh
-# # decomposePar
-# # mpirun -np 8 snappyHexMesh -overwrite -parallel
-# # reconstructParMesh -constant
+cd ../rightWing
+surfaceFeatureExtract
+blockMesh
+decomposePar
+mpirun -np 8 snappyHexMesh -overwrite -parallel
+reconstructParMesh -constant
 # snappyHexMesh -overwrite
-# blockMesh
 
-# cd ../body
-# surfaceFeatureExtract
-# blockMesh
-# # decomposePar
-# # mpirun -np 8 snappyHexMesh -overwrite -parallel
-# # reconstructParMesh -constant
+cd ../body
+surfaceFeatureExtract
+blockMesh
+decomposePar
+mpirun -np 8 snappyHexMesh -overwrite -parallel
+reconstructParMesh -constant
 # snappyHexMesh -overwrite
 
 cd ../all
@@ -53,4 +51,8 @@ setFields
 checkMesh
 
 renumberMesh -overwrite
-overPimpleDyMFoam | tee log
+
+decomposePar
+mpirun -np 64 overPimpleDyMFoam -parallel
+reconstructPar
+# overPimpleDyMFoam | tee log
