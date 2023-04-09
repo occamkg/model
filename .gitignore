@@ -1,4 +1,4 @@
-all/0.*
+all/0*
 all/1*
 all/2*
 all/3*
@@ -10,7 +10,9 @@ all/8*
 all/9*
 
 leftWing/constant/polyMesh
+leftWing/0
 rightWing/constant/polyMesh
+rightWing/0
 body/constant/polyMesh
 all/constant/polyMesh
 all/postProcessing
