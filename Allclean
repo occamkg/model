@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd all
-rm -r 0* 1* 2* 3* 4* 5* 6* 7* 8* 9*
+rm -r 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9*
 # rm -r constant/polyMesh
 rm -r postProcessing
 rm -r processor*

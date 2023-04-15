@@ -9,7 +9,7 @@ cd $MODEL
 decomposePar
 mpirun -np 64 overPimpleDyMFoam -parallel
 reconstructPar
-
+rm -r processor*
 
 
 ================================copy====================================
