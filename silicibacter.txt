@@ -5,9 +5,13 @@ ssh occam@silicibacter.cs.hmc.edu
 export MODEL=/research/occam/model
 cd $MODEL
 
-
+cd all
+rm -r 0 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9* processor* postProcessing
+cp -r 0_org 0
 decomposePar
 mpirun -np 64 overPimpleDyMFoam -parallel
+
+
 reconstructPar
 rm -r processor*
 

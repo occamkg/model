@@ -36,10 +36,10 @@ writeInterval   0.2;
 
 
 //For testing the kinematics
-endTime         2; // 5
-deltaT          0.05; // 0.01
+endTime         1; // 5
+deltaT          0.01; // 0.01
 writeControl    runTime;
-writeInterval   10;
+writeInterval   0.05;
 
 
 purgeWrite      0;
@@ -188,40 +188,40 @@ functions
 
 ///////////////////////////////////////////////////////////////////////////
 
-    forceCoeffs_object
-    {
-        // rhoInf - reference density
-        // CofR - Centre of rotation
-        // dragDir - Direction of drag coefficient
-        // liftDir - Direction of lift coefficient
-        // pitchAxis - Pitching moment axis
-        // magUinf - free stream velocity magnitude
-        // lRef - reference length
-        // Aref - reference area
-        type forceCoeffs;
-        libs ("libforces.so");
-        //patches ("body1" "body2" "body3");
-        patches ("leftWing" "rightWing" "body");
+    // forceCoeffs_object
+    // {
+    //     // rhoInf - reference density
+    //     // CofR - Centre of rotation
+    //     // dragDir - Direction of drag coefficient
+    //     // liftDir - Direction of lift coefficient
+    //     // pitchAxis - Pitching moment axis
+    //     // magUinf - free stream velocity magnitude
+    //     // lRef - reference length
+    //     // Aref - reference area
+    //     type forceCoeffs;
+    //     libs ("libforces.so");
+    //     //patches ("body1" "body2" "body3");
+    //     patches ("leftWing" "rightWing" "body");
 
-        pName p;
-        Uname U;
-        rho rhoInf;
-        rhoInf 1.184;
+    //     pName p;
+    //     Uname U;
+    //     rho rhoInf;
+    //     rhoInf 1.184;
 
-        //// Dump to file
-        log true;
+    //     //// Dump to file
+    //     log true;
 
-        CofR (0.0 0 0);
-        liftDir (0 1 0);
-        dragDir (1 0 0);
-        pitchAxis (0 0 1);
-        magUInf 1; // 12.7;
-        lRef 1.0;         // reference lenght for moments!!!
-        Aref 1.0;	//2.0;         // reference area 1 for 2d
+    //     CofR (0.0 0 0);
+    //     liftDir (0 1 0);
+    //     dragDir (1 0 0);
+    //     pitchAxis (0 0 1);
+    //     magUInf 1; // 12.7;
+    //     lRef 1.0;         // reference lenght for moments!!!
+    //     Aref 1.0;	//2.0;         // reference area 1 for 2d
 
-        writeControl   timeStep;
-        writeInterval  1;
-    }
+    //     writeControl   timeStep;
+    //     writeInterval  1;
+    // }
 
 ///////////////////////////////////////////////////////////////////////////
 
