@@ -37,9 +37,9 @@ writeInterval   0.2;
 
 //For testing the kinematics
 endTime         1; // 5
-deltaT          0.01; // 0.01
+deltaT          1e-4; // 0.001 //0.01 C=0.9192791582
 writeControl    runTime;
-writeInterval   0.05;
+writeInterval   0.01;
 
 
 purgeWrite      0;
@@ -56,8 +56,8 @@ timePrecision   6;
 
 // runTimeModifiable true;
 
-// adjustTimeStep  yes;
-maxCo           4;
+adjustTimeStep  true;
+maxCo           100;
 maxDeltaT       0.01;
 
 // ************************************************************************* //
@@ -67,94 +67,94 @@ maxDeltaT       0.01;
 functions
 {
 
-///////////////////////////////////////////////////////////////////////////
-    inMassFlow
-    {
-        type            surfaceFieldValue;
+// ///////////////////////////////////////////////////////////////////////////
+//     inMassFlow
+//     {
+//         type            surfaceFieldValue;
 
-        libs ("libfieldFunctionObjects.so");
-        enabled         true;
+//         libs ("libfieldFunctionObjects.so");
+//         enabled         true;
 
-        writeControl   timeStep;
-        writeInterval  1;
+//         writeControl   timeStep;
+//         writeInterval  100;
 
-        log             true;
+//         log             false;
 
-        writeFields     false;
+//         writeFields     false;
 
-        regionType          patch;
-        name      inlet;
+//         regionType          patch;
+//         name      inlet;
 
-	    operation       sum;
-        fields
-        (
-            phi
-        );
-    }
-///////////////////////////////////////////////////////////////////////////
+// 	    operation       sum;
+//         fields
+//         (
+//             phi
+//         );
+//     }
+// ///////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////
-    outMassFlow
-    {
-        type            surfaceFieldValue;
+// ///////////////////////////////////////////////////////////////////////////
+//     outMassFlow
+//     {
+//         type            surfaceFieldValue;
 
-        libs ("libfieldFunctionObjects.so");
-        enabled         true;
+//         libs ("libfieldFunctionObjects.so");
+//         enabled         true;
 
-		writeControl   timeStep;
-		writeInterval  1;
+// 		writeControl   runTime;
+// 		writeInterval  0.1;
 
-        log             yes;
+//         log             no;
 
-        writeFields     false;
+//         writeFields     false;
 
-        regionType          patch;
-        name      outlet;
+//         regionType          patch;
+//         name      outlet;
 
-		operation       sum;
-        fields
-        (
-            phi
-        );
-    }
-///////////////////////////////////////////////////////////////////////////
+// 		operation       sum;
+//         fields
+//         (
+//             phi
+//         );
+//     }
+// ///////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////
 
-    fieldAverage
-    {
-        type            fieldAverage;
-        libs ("libfieldFunctionObjects.so");
-        enabled        false;
-        writeControl   outputTime;
+//     fieldAverage
+//     {
+//         type            fieldAverage;
+//         libs ("libfieldFunctionObjects.so");
+//         enabled        false;
+//         writeControl   outputTime;
 
-		//writeControl   timeStep;
-		//writeInterval  100;
+// 		//writeControl   timeStep;
+// 		//writeInterval  100;
 
-		//cleanRestart true;
+// 		//cleanRestart true;
 
-		//timeStart       20;
-		//timeEnd         200;
+// 		//timeStart       20;
+// 		//timeEnd         200;
 
-        fields
-        (
-            U
-            {
-                mean        on;
-                prime2Mean  on;
-                base        time;
-            }
+//         fields
+//         (
+//             U
+//             {
+//                 mean        on;
+//                 prime2Mean  on;
+//                 base        time;
+//             }
 
-            p
-            {
-                mean        on;
-                prime2Mean  on;
-                base        time;
-            }
-        );
-    }
+//             p
+//             {
+//                 mean        on;
+//                 prime2Mean  on;
+//                 base        time;
+//             }
+//         );
+//     }
 
-///////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -164,12 +164,14 @@ functions
         libs ("libforces.so");
 
         //writeControl outputTime;
-        writeControl   timeStep;
-        writeInterval  1;
+		writeControl   timeStep;
+		writeInterval  1;
+        log            false;
+
 
         //// Patches to sample
-        //patches ("body1" "body2" "body3");
-        patches ("leftWing" "rightWing" "body");
+        // patches ("leftWing" "rightWing" "body");
+        patches ("leftWing" "rightWing");
 
         //// Name of fields
         pName p;
@@ -178,7 +180,7 @@ functions
         //// Density
         rho rhoInf;
         // https://www.engineersedge.com/physics/viscosity_of_air_dynamic_and_kinematic_14483.htm
-        rhoInf 1.184; //25 degrees C
+        rhoInf 1.204; // 20 degrees C
 
         //// Centre of rotation
         CofR (0 0 0);
@@ -186,80 +188,80 @@ functions
 
 ///////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////
 
-    // forceCoeffs_object
-    // {
-    //     // rhoInf - reference density
-    //     // CofR - Centre of rotation
-    //     // dragDir - Direction of drag coefficient
-    //     // liftDir - Direction of lift coefficient
-    //     // pitchAxis - Pitching moment axis
-    //     // magUinf - free stream velocity magnitude
-    //     // lRef - reference length
-    //     // Aref - reference area
-    //     type forceCoeffs;
-    //     libs ("libforces.so");
-    //     //patches ("body1" "body2" "body3");
-    //     patches ("leftWing" "rightWing" "body");
+//     forceCoeffs_object
+//     {
+//         // rhoInf - reference density
+//         // CofR - Centre of rotation
+//         // dragDir - Direction of drag coefficient
+//         // liftDir - Direction of lift coefficient
+//         // pitchAxis - Pitching moment axis
+//         // magUinf - free stream velocity magnitude
+//         // lRef - reference length
+//         // Aref - reference area
+//         type forceCoeffs;
+//         libs ("libforces.so");
+//         //patches ("body1" "body2" "body3");
+//         patches ("leftWing" "rightWing" "body");
 
-    //     pName p;
-    //     Uname U;
-    //     rho rhoInf;
-    //     rhoInf 1.184;
+//         pName p;
+//         Uname U;
+//         rho rhoInf;
+//         rhoInf 1.184;
 
-    //     //// Dump to file
-    //     log true;
+//         //// Dump to file
+//         log true;
 
-    //     CofR (0.0 0 0);
-    //     liftDir (0 1 0);
-    //     dragDir (1 0 0);
-    //     pitchAxis (0 0 1);
-    //     magUInf 1; // 12.7;
-    //     lRef 1.0;         // reference lenght for moments!!!
-    //     Aref 1.0;	//2.0;         // reference area 1 for 2d
+//         CofR (0.0 0 0);
+//         liftDir (0 1 0);
+//         dragDir (1 0 0);
+//         pitchAxis (0 0 1);
+//         magUInf 1; // 12.7;
+//         lRef 1.0;         // reference lenght for moments!!!
+//         Aref 1.0;	//2.0;         // reference area 1 for 2d
 
-    //     writeControl   timeStep;
-    //     writeInterval  1;
-    // }
+//         writeControl   timeStep;
+//         writeInterval  1;
+//     }
 
-///////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////
 
-    minmaxdomain
-    {
-        type fieldMinMax;
-        //type banana;
+//     minmaxdomain
+//     {
+//         type fieldMinMax;
+//         //type banana;
 
-        libs ("libfieldFunctionObjects.so");
+//         libs ("libfieldFunctionObjects.so");
 
-        enabled true;
+//         enabled true;
 
-        mode component;
+//         mode component;
 
-        writeControl timeStep;
-        writeInterval 1;
+// 		writeControl   runTime;
+// 		writeInterval  0.1;
 
-        log true;
+//         log false;
 
-        fields (p U k epsilon omega nut);
-    }
+//         fields (p U k epsilon omega nut);
+//     }
 
-///////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////
-    yplus
-    {
-    	type yPlus;
-    	functionObjectLibs ("libutilityFunctionObjects.so");
-    	enabled true;
-        writeControl outputTime;
+// ///////////////////////////////////////////////////////////////////////////
+//     yplus
+//     {
+//     	type yPlus;
+//     	functionObjectLibs ("libutilityFunctionObjects.so");
+//     	enabled true;
+//         writeControl outputTime;
 
-        //writeControl timeStep;
-        //writeInterval 1;
-    }
-///////////////////////////////////////////////////////////////////////////
+//         //writeControl timeStep;
+//         //writeInterval 1;
+//     }
+// ///////////////////////////////////////////////////////////////////////////
 
 };
 

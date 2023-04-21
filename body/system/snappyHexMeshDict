@@ -16,8 +16,8 @@ FoamFile
 
 // Which of the steps to run
 castellatedMesh true;
-snap            true;
-addLayers       true;
+snap            false;
+addLayers       false;
 
 
 // Geometry. Definition of all surfaces. All surfaces are of class
@@ -218,7 +218,7 @@ addLayersControls
     // Per final patch (so not geometry!) the layer information
     layers
     {
-        "body.*"
+        body
         {
             nSurfaceLayers 1;
         }

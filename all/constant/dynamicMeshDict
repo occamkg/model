@@ -38,13 +38,13 @@ multiSolidBodyMotionSolverCoeffs
     {
         solidBodyMotionFunction tabulated6DoFMotion;
         CofG         (-0.035 0 0.0333333);
-        timeDataFileName "$MODEL/6dof_file_generation/6DoFL.dat";
+        timeDataFileName "$MODEL/kinematics/6DoFL.dat";
     }
     rightWing
     {
         solidBodyMotionFunction tabulated6DoFMotion;
         CofG         (-0.035 0 -0.0333333);
-        timeDataFileName "$MODEL/6dof_file_generation/6DoFR.dat";
+        timeDataFileName "$MODEL/kinematics/6DoFR.dat";
     }
 }
 
