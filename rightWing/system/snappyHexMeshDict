@@ -16,8 +16,8 @@ FoamFile
 
 // Which of the steps to run
 castellatedMesh true;
-snap            false;
-addLayers       false;
+snap            true;
+addLayers       true;
 
 
 // Geometry. Definition of all surfaces. All surfaces are of class
@@ -91,7 +91,7 @@ castellatedMeshControls
     (
         {
             file "birdRight.eMesh";
-            level 4;
+            level 6;
         }
     );
 

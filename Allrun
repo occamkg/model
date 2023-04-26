@@ -31,12 +31,12 @@ cd ../body
 rm -r constant/extendedFeatureEdgeMesh constant/polyMesh
 surfaceFeatureExtract
 blockMesh
-snappyHexMesh -overwrite
-# decomposePar
-# mpirun -np 64 snappyHexMesh -overwrite -parallel
+# snappyHexMesh -overwrite
+decomposePar
+mpirun -np 64 snappyHexMesh -overwrite -parallel
 
-# reconstructParMesh -constant
-# rm -r processor*
+reconstructParMesh -constant
+rm -r processor*
 
 cd ../all
 rm -r constant/extendedFeatureEdgeMesh constant/polyMesh
@@ -64,7 +64,8 @@ renumberMesh -overwrite
 
 rm -r 0.* 1* 2* 3* 4* 5* 6* 7* 8* 9* processor* postProcessing
 decomposePar
-mpirun -np 64 overPimpleDyMFoam -parallel
+foamJob -parallel overPimpleDyMFoam
+# mpirun -np 64 overPimpleDyMFoam -parallel
 
 
 reconstructPar

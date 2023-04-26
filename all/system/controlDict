@@ -36,17 +36,17 @@ writeInterval   0.2;
 
 
 //For testing the kinematics
-endTime         1; // 5
-deltaT          1e-4; // 0.001 //0.01 C=0.9192791582
+endTime         2; // 5
+deltaT          0.001; // 0.001 //0.01 C=0.9192791582
 writeControl    runTime;
-writeInterval   0.01;
+writeInterval   2;
 
 
 purgeWrite      0;
 
 writeFormat     ascii;
 
-writePrecision  10;
+writePrecision  6;
 
 writeCompression off;
 
@@ -56,9 +56,9 @@ timePrecision   6;
 
 // runTimeModifiable true;
 
-adjustTimeStep  true;
-maxCo           100;
-maxDeltaT       0.01;
+// adjustTimeStep  true;
+// maxCo           4;
+// maxDeltaT       0.01;
 
 // ************************************************************************* //
 
@@ -165,13 +165,13 @@ functions
 
         //writeControl outputTime;
 		writeControl   timeStep;
-		writeInterval  1;
+        writeInterval  1;
         log            false;
 
 
         //// Patches to sample
         // patches ("leftWing" "rightWing" "body");
-        patches ("leftWing" "rightWing");
+        patches ("leftWing" "rightWing" "body");
 
         //// Name of fields
         pName p;

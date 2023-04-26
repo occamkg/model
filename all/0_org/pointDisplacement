@@ -23,10 +23,10 @@ boundaryField
     "oversetPatch"
     {
         patchType       overset;
-        type            zeroGradient;
+        // type            zeroGradient;
 
-        //type            overset;
-        //value           $internalField;
+        type            overset;
+        value           $internalField;
     }
 
     "(leftWing|rightWing|body)"
